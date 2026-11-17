@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's For Dinner</title>
+    <link rel="icon" href="./images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="bg-white shadow-sm border-bottom border-orange-100">
+      <nav class="navbar navbar-expand-md py-2">
+        <div class="container-fluid">
+          <a href="#" class="navbar-brand d-flex align-items-center gap-3 m-0">
+            <div
+              class="logo-icon-box rounded-circle d-flex align-items-center justify-content-center shadow"
+            >
+              <i class="fa-solid fa-utensils text-white fs-5"></i>
+            </div>
+            <div>
+              <h1 class="logo-title mb-0 fs-2 fw-bold black-color">
+                What's For Dinner
+              </h1>
+              <p class="logo-subtitle mb-0 small fw-normal gray-color">
+                Your daily meal inspiration
+              </p>
+            </div>
+          </a>
+
+          <button
+            class="navbar-toggler border-0 shadow-none nav-icon-btn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fa-solid fa-bars fs-3"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul
+              class="navbar-nav ms-auto align-items-md-center gap-3 gap-md-4 mt-3 mt-md-0 pt-3 pt-md-0 border-top border-md-0"
+            >
+              <li class="nav-item">
+                <button
+                  class="nav-link nav-icon-btn d-flex align-items-center p-0 border-0 bg-transparent"
+                  title="Saved Recipes"
+                >
+                  <i class="fa-solid fa-bookmark fs-5 me-3 me-md-0"></i>
+                  <span class="d-md-none">Saved Recipes</span>
+                </button>
+              </li>
+
+              <li class="nav-item">
+                <button
+                  class="nav-link nav-icon-btn d-flex align-items-center p-0 border-0 bg-transparent"
+                  title="Recent"
+                >
+                  <i
+                    class="fa-solid fa-clock-rotate-left fs-5 me-3 me-md-0"
+                  ></i>
+                  <span class="d-md-none">Recent</span>
+                </button>
+              </li>
+
+              <li class="nav-item">
+                <button
+                  class="nav-link nav-icon-btn d-flex align-items-center p-0 border-0 bg-transparent"
+                  title="Settings"
+                >
+                  <i class="fa-solid fa-gear fs-5 me-3 me-md-0"></i>
+                  <span class="d-md-none">Settings</span>
+                </button>
+              </li>
+
+              <li class="nav-item">
+                <button
+                  class="nav-link d-flex align-items-center p-0 border-0 bg-transparent"
+                  title="Profile"
+                >
+                  <img
+                    src="./images/avatar-4.jpg"
+                    alt="Profile"
+                    class="profile-avatar rounded-circle me-3 me-md-0"
+                  />
+                  <span class="d-md-none fw-medium text-dark">Profile</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="container-fluid p-4">
+      <section
+        id="recipe-display-section"
+        class="recipe-card bg-white rounded-4 shadow-lg overflow-hidden mb-5"
+      >
+        <div class="row g-0 recipe-card-row">
+          <div
+            class="col-12 col-lg-5 recipe-image-col position-relative overflow-hidden"
+          >
+            <img
+              id="recipe-image"
+              src="https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=800&auto=format&fit=crop"
+              alt="Creamy Spaghetti Carbonara"
+            />
+
+            <div
+              class="position-absolute top-0 start-0 m-3 m-md-4 bg-white rounded-pill px-3 py-2 shadow-sm d-flex align-items-center gap-2"
+            >
+              <i class="fa-solid fa-star text-warning"></i>
+              <span class="fw-semibold black-color" id="rating-average"
+                >4.8</span
+              >
+              <span class="gray-color small" id="rating-quantity"
+                >(234 reviews)</span
+              >
+            </div>
+
+            <div
+              class="position-absolute bottom-0 start-0 end-0 m-3 p-3 p-md-4 rounded-4 recipe-floating-stats"
+            >
+              <div class="row g-2 text-center">
+                <div class="col-4">
+                  <i
+                    class="fa-solid fa-clock text-orange fs-4 mb-1 d-block"
+                  ></i>
+                  <p class="gray-color small mb-0">Prep Time</p>
+                  <p class="fw-bold mb-0 black-color" id="prep-time-display">
+                    15 min
+                  </p>
+                </div>
+                <div class="col-4">
+                  <i
+                    class="fa-solid fa-fire-burner text-danger fs-4 mb-1 d-block"
+                  ></i>
+                  <p class="gray-color small mb-0">Cook Time</p>
+                  <p class="fw-bold mb-0 black-color" id="cook-time-display">
+                    20 min
+                  </p>
+                </div>
+                <div class="col-4">
+                  <i
+                    class="fa-solid fa-users text-primary fs-4 mb-1 d-block"
+                  ></i>
+                  <p class="gray-color small mb-0">Servings</p>
+                  <p class="fw-bold mb-0 black-color" id="servings-display">
+                    4 people
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-lg-7 recipe-details-col p-4 p-lg-5 overflow-y-auto"
+          >
+            <div
+              class="d-flex flex-column flex-md-row gap-3 align-items-start justify-content-between mb-4"
+            >
+              <div>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge rounded-pill px-3 py-2 badge-difficulty fw-semibold"
+                    id="difficulty-badge"
+                    >Easy</span
+                  >
+                  <span
+                    class="badge rounded-pill px-3 py-2 badge-category fw-semibold"
+                    id="category-badge"
+                    >Italian</span
+                  >
+                </div>
+                <h2 class="fw-bold fs-32 mb-2 black-color" id="recipe-name">
+                  Creamy Spaghetti Carbonara
+                </h2>
+                <p class="gray-2 mb-0 fs-18" id="recipe-description">
+                  A classic Italian pasta dish with eggs, cheese, and pancetta
+                </p>
+              </div>
+
+              <div
+                class="d-flex gap-2 flex-shrink-0 align-self-end align-self-md-start"
+              >
+                <button
+                  class="btn btn-action-icon rounded-3"
+                  title="Save Recipe"
+                >
+                  <i class="fa-solid fa-bookmark"></i>
+                </button>
+                <button
+                  class="btn btn-action-icon rounded-3"
+                  title="Share Recipe"
+                >
+                  <i class="fa-solid fa-share-nodes"></i>
+                </button>
+              </div>
+            </div>
+
+            <div
+              id="time-warning"
+              class="time-warning-alert rounded-3 p-3 mb-4 d-none"
+              role="alert"
+            >
+              <div class="d-flex align-items-center">
+                <i
+                  class="fa-solid fa-triangle-exclamation text-danger fs-4 me-3 flex-shrink-0"
+                ></i>
+                <div>
+                  <p class="fw-semibold text-danger-emphasis mb-0">
+                    Extended Preparation Time
+                  </p>
+                  <p class="text-danger small mb-0">
+                    This recipe requires more than 45 minutes to prepare. Plan
+                    accordingly!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <ul
+              class="nav nav-tabs recipe-tabs border-bottom mb-4"
+              id="recipeTab"
+              role="tablist"
+            >
+              <li class="nav-item col-3 text-center" role="presentation">
+                <button
+                  class="nav-link active w-100 pb-2 fw-semibold"
+                  id="ingredients-tab-btn"
+                  data-bs-toggle="tab"
+                  data-bs-target="#ingredients-tab"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="fa-solid fa-list-check me-1 me-md-2"></i>
+                  <span>Ingredients</span>
+                </button>
+              </li>
+              <li class="nav-item col-3 text-center" role="presentation">
+                <button
+                  class="nav-link w-100 pb-2 fw-semibold"
+                  id="instructions-tab-btn"
+                  data-bs-toggle="tab"
+                  data-bs-target="#instructions-tab"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="fa-solid fa-book-open me-1 me-md-2"></i>
+                  <span>Instructions</span>
+                </button>
+              </li>
+              <li class="nav-item col-3 text-center" role="presentation">
+                <button
+                  class="nav-link w-100 pb-2 fw-semibold"
+                  id="nutrition-tab-btn"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nutrition-tab"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="fa-solid fa-chart-pie me-1 me-md-2"></i>
+                  <span>Nutrition</span>
+                </button>
+              </li>
+              <li class="nav-item col-3 text-center" role="presentation">
+                <button
+                  class="nav-link w-100 pb-2 fw-semibold"
+                  id="tips-tab-btn"
+                  data-bs-toggle="tab"
+                  data-bs-target="#tips-tab"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="fa-solid fa-lightbulb me-1 me-md-2"></i>
+                  <span>Chef's Tips</span>
+                </button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="recipeTabContent">
+              <div
+                class="tab-pane fade show active tab-panel overflow-y-auto"
+                id="ingredients-tab"
+                role="tabpanel"
+              >
+                <div class="ingredients-box rounded-4 p-4">
+                  <ul
+                    class="list-unstyled mb-0 d-flex flex-column gap-3"
+                    id="ingredients-list"
+                  >
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >1</span
+                      >
+                      <span class="gray-text">400g spaghetti pasta</span>
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >2</span
+                      >
+                      <span class="gray-text"
+                        >200g pancetta or guanciale, diced</span
+                      >
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >3</span
+                      >
+                      <span class="gray-text">4 large eggs</span>
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >4</span
+                      >
+                      <span class="gray-text"
+                        >100g Pecorino Romano cheese, grated</span
+                      >
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >5</span
+                      >
+                      <span class="gray-text">50g Parmesan cheese, grated</span>
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >6</span
+                      >
+                      <span class="gray-text">Freshly ground black pepper</span>
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                      <span
+                        class="step-circle rounded-circle fw-bold small flex-shrink-0"
+                        >7</span
+                      >
+                      <span class="gray-text">Salt for pasta water</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="tab-pane fade tab-panel overflow-y-auto"
+                id="instructions-tab"
+                role="tabpanel"
+              >
+                <div class="d-flex flex-column gap-4" id="instructions-list">
+                  <div class="d-flex align-items-start gap-3">
+                    <span
+                      class="step-square rounded-4 fw-bold fs-5 flex-shrink-0"
+                      >1</span
+                    >
+                    <p class="gray-text pt-2 mb-0">
+                      Bring a large pot of salted water to boil. Cook spaghetti
+                      according to package directions until al dente.
+                    </p>
+                  </div>
+                  <div class="d-flex align-items-start gap-3">
+                    <span
+                      class="step-square rounded-4 fw-bold fs-5 flex-shrink-0"
+                      >2</span
+                    >
+                    <p class="gray-text pt-2 mb-0">
+                      While pasta cooks, heat a large skillet over medium heat.
+                      Add diced pancetta and cook until crispy, about 5-7
+                      minutes.
+                    </p>
+                  </div>
+                  <div class="d-flex align-items-start gap-3">
+                    <span
+                      class="step-square rounded-4 fw-bold fs-5 flex-shrink-0"
+                      >3</span
+                    >
+                    <p class="gray-text pt-2 mb-0">
+                      In a bowl, whisk together eggs, grated Pecorino Romano,
+                      and Parmesan cheese. Add plenty of freshly ground black
+                      pepper.
+                    </p>
+                  </div>
+                  <div class="d-flex align-items-start gap-3">
+                    <span
+                      class="step-square rounded-4 fw-bold fs-5 flex-shrink-0"
+                      >4</span
+                    >
+                    <p class="gray-text pt-2 mb-0">
+                      Reserve 1 cup of pasta cooking water before draining.
+                      Drain pasta and immediately add to the skillet with
+                      pancetta.
+                    </p>
+                  </div>
+                  <div class="d-flex align-items-start gap-3">
+                    <span
+                      class="step-square rounded-4 fw-bold fs-5 flex-shrink-0"
+                      >5</span
+                    >
+                    <p class="gray-text pt-2 mb-0">
+                      Remove skillet from heat. Quickly pour in egg mixture
+                      while tossing pasta vigorously. Add reserved pasta water
+                      as needed to create a creamy sauce.
+                    </p>
+                  </div>
+                  <div class="d-flex align-items-start gap-3">
+                    <span
+                      class="step-square rounded-4 fw-bold fs-5 flex-shrink-0"
+                      >6</span
+                    >
+                    <p class="gray-text pt-2 mb-0">
+                      Serve immediately with extra cheese and black pepper on
+                      top. Enjoy your authentic carbonara!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="tab-pane fade tab-panel overflow-y-auto"
+                id="nutrition-tab"
+                role="tabpanel"
+              >
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <div
+                      class="bg-light rounded-3 p-3 d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="nutri-icon bg-orange-soft rounded-3">
+                          <i class="fa-solid fa-fire text-orange"></i>
+                        </div>
+                        <span class="fw-medium">Calories</span>
+                      </div>
+                      <span class="fw-bold fs-5" id="calories-value"
+                        >520 kcal</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div
+                      class="bg-light rounded-3 p-3 d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="nutri-icon bg-primary-subtle rounded-3">
+                          <i class="fa-solid fa-dumbbell text-primary"></i>
+                        </div>
+                        <span class="fw-medium">Protein</span>
+                      </div>
+                      <span class="fw-bold fs-5" id="protein-value">28g</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div
+                      class="bg-light rounded-3 p-3 d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="nutri-icon bg-warning-subtle rounded-3">
+                          <i class="fa-solid fa-wheat-awn text-warning"></i>
+                        </div>
+                        <span class="fw-medium">Carbohydrates</span>
+                      </div>
+                      <span class="fw-bold fs-5" id="carbs-value">62g</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div
+                      class="bg-light rounded-3 p-3 d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="nutri-icon bg-danger-subtle rounded-3">
+                          <i class="fa-solid fa-droplet text-danger"></i>
+                        </div>
+                        <span class="fw-medium">Fat</span>
+                      </div>
+                      <span class="fw-bold fs-5" id="fat-value">18g</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div
+                      class="bg-light rounded-3 p-3 d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="nutri-icon bg-success-subtle rounded-3">
+                          <i class="fa-solid fa-seedling text-success"></i>
+                        </div>
+                        <span class="fw-medium">Fiber</span>
+                      </div>
+                      <span class="fw-bold fs-5" id="fiber-value">3g</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div
+                      class="bg-light rounded-3 p-3 d-flex align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="nutri-icon bg-pink-soft rounded-3">
+                          <i class="fa-solid fa-cube text-pink"></i>
+                        </div>
+                        <span class="fw-medium">Sodium</span>
+                      </div>
+                      <span class="fw-bold fs-5" id="sodium-value">680mg</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="tab-pane fade tab-panel overflow-y-auto"
+                id="tips-tab"
+                role="tabpanel"
+              >
+                <div class="d-flex flex-column gap-3" id="tips-list">
+                  <div
+                    class="tip-card rounded-3 p-3 d-flex align-items-start gap-3"
+                  >
+                    <i
+                      class="fa-solid fa-circle-check text-amber fs-5 mt-1"
+                    ></i>
+                    <p class="gray-text mb-0">
+                      Use room temperature eggs for a smoother sauce consistency
+                    </p>
+                  </div>
+                  <div
+                    class="tip-card rounded-3 p-3 d-flex align-items-start gap-3"
+                  >
+                    <i
+                      class="fa-solid fa-circle-check text-amber fs-5 mt-1"
+                    ></i>
+                    <p class="gray-text mb-0">
+                      Work quickly when mixing eggs with hot pasta to avoid
+                      scrambling
+                    </p>
+                  </div>
+                  <div
+                    class="tip-card rounded-3 p-3 d-flex align-items-start gap-3"
+                  >
+                    <i
+                      class="fa-solid fa-circle-check text-amber fs-5 mt-1"
+                    ></i>
+                    <p class="gray-text mb-0">
+                      Reserve extra pasta water - it's the secret to perfect
+                      creaminess
+                    </p>
+                  </div>
+                  <div
+                    class="tip-card rounded-3 p-3 d-flex align-items-start gap-3"
+                  >
+                    <i
+                      class="fa-solid fa-circle-check text-amber fs-5 mt-1"
+                    ></i>
+                    <p class="gray-text mb-0">
+                      Freshly grated cheese makes all the difference in flavor
+                    </p>
+                  </div>
+                  <div
+                    class="tip-card rounded-3 p-3 d-flex align-items-start gap-3"
+                  >
+                    <i
+                      class="fa-solid fa-circle-check text-amber fs-5 mt-1"
+                    ></i>
+                    <p class="gray-text mb-0">
+                      Never add cream - authentic carbonara is made with eggs
+                      only
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-top">
+              <button
+                onclick="changeRecipe()"
+                id="try-another-btn"
+                class="btn btn-try-another text-white fw-semibold px-4 py-3 rounded-3"
+              >
+                <i class="fa-solid fa-rotate me-2"></i>Try Another Recipe
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
